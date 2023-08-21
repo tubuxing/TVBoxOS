@@ -87,7 +87,7 @@ public class GridFragment extends BaseLazyFragment {
         if(isFolder){
             this.sortData.flag ="1"; // 修改sortData.flag
         }else {
-            this.sortData.flag =null; // 修改sortData.flag
+            this.sortData.flag ="2"; // 修改sortData.flag
         }
         initView();
         this.sortData.id =id; // 修改sortData.id为新的ID
@@ -261,10 +261,10 @@ public class GridFragment extends BaseLazyFragment {
                     page++;
                     maxPage = absXml.movie.pagecount;
 
-                    if (page > maxPage) {
+                    if (maxPage>0 && page > maxPage) {
                         gridAdapter.loadMoreEnd();
                         gridAdapter.setEnableLoadMore(false);
-                        if(page>2)Toast.makeText(getContext(), "没有更多了", Toast.LENGTH_SHORT).show();
+                        if(page>2)Toast.makeText(getContext(), "到底啦", Toast.LENGTH_SHORT).show();
                     } else {
                         gridAdapter.loadMoreComplete();
                         gridAdapter.setEnableLoadMore(true);
@@ -273,7 +273,7 @@ public class GridFragment extends BaseLazyFragment {
                     if(page == 1){
                         showEmpty();
                     }else{
-                        Toast.makeText(getContext(), "没有更多了", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "到底啦", Toast.LENGTH_SHORT).show();
                         gridAdapter.loadMoreEnd();
                     }
                     gridAdapter.setEnableLoadMore(false);
